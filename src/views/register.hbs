@@ -11,14 +11,14 @@
               <p class="w-100 text-start">{{message}}</p>
               <form>
                 <!-- 2 column grid layout with text inputs for the first and last names -->
-                <div class="row mb-4">
-                  <div class="col">
+                <div class="row">
+                  <div class="col-12 col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
                       <input type="text" id="firstName" name="firstName" class="form-control" />
                       <label class="form-label" for="firstName">First name</label>
                     </div>
                   </div>
-                  <div class="col">
+                  <div class="col-12 col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
                       <input type="text" id="lastName" name="lastName" class="form-control" />
                       <label class="form-label" for="lastName">Last name</label>
@@ -52,7 +52,7 @@
 
                   <div class="col text-end">
                     <!-- Simple link -->
-                    <a href="/forgot_password">Forgot password?</a>
+                    <a href="/forgot_password" class="d-inline-block">Forgot password?</a>
                   </div>
                 </div>
 
