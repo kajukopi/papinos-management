@@ -1,26 +1,34 @@
-const router = require("express").Router()
-const db = require("../database")
-const checkSession = require("../middleware/index")
+// routes/items.js
+const express = require("express")
 
-function setLocals(req, res, next) {
-  res.locals = {title: "Maintenance", sidebar: true, page: "maintenance", scripts: [{script: "maintenance"}]}
-  next()
-}
+const Item = require("../models/item.js")
 
-// GET All
-router.get("/",checkSession, setLocals, function (req, res, next) {
-  if (!req.isValid) return res.redirect("/")
-  res.render("maintenance")
+const router = express.Router()
+
+router.get("/", async (req, res) => {
+  res.locals = {title: "", message: "", scripts: ["index"]}
+  const items = await Item.find().lean()
+  res.render("items", {items})
 })
 
-// POST
-router.post("/",checkSession, function (req, res, next) {
-  res.json({})
+router.post("/", async (req, res) => {
+  const {name, description} = req.body
+  const newItem = new Item({name, description})
+  await newItem.save()
+  res.redirect("/")
 })
 
-// DELETE by ID
-router.delete("/:id",checkSession, function (req, res, next) {
-  res.json({})
+router.put("/:id", async (req, res) => {
+  const {id} = req.params
+  const {name, description} = req.body
+  await Item.findByIdAndUpdate(id, {name, description})
+  res.redirect("/")
+})
+
+router.delete("/:id", async (req, res) => {
+  const {id} = req.params
+  await Item.findByIdAndDelete(id)
+  res.redirect("/")
 })
 
 module.exports = router

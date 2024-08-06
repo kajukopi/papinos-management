@@ -1,26 +1,34 @@
-const router = require("express").Router()
-const db = require("../database")
-const checkSession = require("../middleware/index")
+// routes/service.js
+const express = require("express")
 
-function setLocals(req, res, next) {
-  res.locals = {title: "Service", sidebar: true, page: "service", scripts: [{script: "service"}]}
-  next()
-}
+const Service = require("../models/service.js")
 
-// GET All
-router.get("/",checkSession, setLocals, function (req, res, next) {
-  if (!req.isValid) return res.redirect("/")
-  res.render("service")
+const router = express.Router()
+
+router.get("/", async (req, res) => {
+  res.locals = {title: "", message: "", scripts: ["service"]}
+  const services = await Service.find().lean()
+  res.render("services", {services})
 })
 
-// POST
-router.post("/",checkSession, function (req, res, next) {
-  res.json({})
+router.post("/", async (req, res) => {
+  const {name, description} = req.body
+  const newService = new Service({name, description})
+  await newService.save()
+  res.redirect("/")
 })
 
-// DELETE by ID
-router.delete("/:id",checkSession, function (req, res, next) {
-  res.json({})
+router.put("/:id", async (req, res) => {
+  const {id} = req.params
+  const {name, description} = req.body
+  await Service.findByIdAndUpdate(id, {name, description})
+  res.redirect("/")
+})
+
+router.delete("/:id", async (req, res) => {
+  const {id} = req.params
+  await Service.findByIdAndDelete(id)
+  res.redirect("/")
 })
 
 module.exports = router

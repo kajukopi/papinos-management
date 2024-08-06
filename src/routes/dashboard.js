@@ -1,26 +1,34 @@
-const router = require("express").Router()
-const db = require("../database")
-const checkSession = require("../middleware/index")
+// routes/dashboard.js
+const express = require("express")
 
-function setLocals(req, res, next) {
-  res.locals = {title: "Dashboard", sidebar: true, page: "dashboard", scripts: [{script: "dashboard"}]}
-  next()
-}
+const Dashboard = require("../models/dashboard.js")
 
-// GET All
-router.get("/",checkSession, setLocals, function (req, res, next) {
-  if (!req.isValid) return res.redirect("/")
-  res.render("dashboard")
+const router = express.Router()
+
+router.get("/", async (req, res) => {
+  res.locals = {title: "Dashboard", message: "", scripts: ["dashboard"]}
+  const dashboards = await Dashboard.find().lean()
+  res.render("dashboards", {dashboards})
 })
 
-// POST
-router.post("/",checkSession, function (req, res, next) {
-  res.json({})
+router.post("/", async (req, res) => {
+  const {name, description} = req.body
+  const newDashboard = new Dashboard({name, description})
+  await newDashboard.save()
+  res.redirect("/")
 })
 
-// DELETE by ID
-router.delete("/:id",checkSession, function (req, res, next) {
-  res.json({})
+router.put("/:id", async (req, res) => {
+  const {id} = req.params
+  const {name, description} = req.body
+  await Dashboard.findByIdAndUpdate(id, {name, description})
+  res.redirect("/")
+})
+
+router.delete("/:id", async (req, res) => {
+  const {id} = req.params
+  await Dashboard.findByIdAndDelete(id)
+  res.redirect("/")
 })
 
 module.exports = router

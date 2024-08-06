@@ -9,17 +9,12 @@ const mongoose = require("mongoose")
 // Connect to MongoDB
 mongoose
   .connect(process.env.DATABASE_URL)
-  .then((res) => {
+  .then(() => {
     console.log("Connected to mongodb!")
   })
   .catch((error) => {
     console.log(error)
   })
-
-const routerHome = require("./routes/home")
-const routerLogin = require("./routes/login")
-const routerRegister = require("./routes/register")
-const routerItem = require("./routes/items")
 
 const app = express()
 
@@ -33,9 +28,15 @@ app.set("views", path.join(__dirname, "views"))
 app.use("/assets", express.static(path.join(__dirname, "..", "/assets")))
 
 // Routes
-app.use("/", routerHome)
-app.use("/login", routerLogin)
-app.use("/register", routerRegister)
-app.use("/items", routerItem)
+app.use("/", require("./routes/home"))
+app.use("/login", require("./routes/login"))
+app.use("/register", require("./routes/register"))
+app.use("/item", require("./routes/item"))
+app.use("/user", require("./routes/user"))
+app.use("/transfer", require("./routes/transfer"))
+app.use("/service", require("./routes/service"))
+app.use("/maintenance", require("./routes/maintenance"))
+app.use("/dashboard", require("./routes/dashboard"))
+app.use("/asset", require("./routes/asset"))
 
 module.exports = app

@@ -10,27 +10,23 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  photo: {
+  firstName: {
     type: String,
     required: false,
   },
-  name: {
+  lastName: {
     type: String,
     required: true,
   },
-  phone: {
-    type: Number,
-    required: false,
+  isAdmin: {
+    type: Boolean,
+    required: true,
   },
   isStaff: {
     type: Boolean,
     required: true,
   },
   isUser: {
-    type: Boolean,
-    required: true,
-  },
-  isNew: {
     type: Boolean,
     required: true,
   },

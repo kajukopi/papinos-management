@@ -1,4 +1,4 @@
-// routes/items.js
+// routes/item.js
 const express = require("express")
 
 const Item = require("../models/item.js")
@@ -6,7 +6,7 @@ const Item = require("../models/item.js")
 const router = express.Router()
 
 router.get("/", async (req, res) => {
-  res.locals = {title: "Hello world!", message: "This is express.js", scripts: ["index"]}
+  res.locals = {title: "", message: "", scripts: ["index"]}
   const items = await Item.find().lean()
   res.render("items", {items})
 })
