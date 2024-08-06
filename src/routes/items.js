@@ -18,6 +18,7 @@ router.post("/", async (req, res) => {
 })
 
 router.put("/:id", async (req, res) => {
+  console.log(req)
   const {id} = req.params
   const {name, description} = req.body
   await Item.findByIdAndUpdate(id, {name, description})
@@ -25,6 +26,7 @@ router.put("/:id", async (req, res) => {
 })
 
 router.delete("/:id", async (req, res) => {
+  console.log(req)
   const {id} = req.params
   await Item.findByIdAndDelete(id)
   res.redirect("/")

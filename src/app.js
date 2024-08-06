@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require("express")
 const path = require("path")
 const cookieParser = require("cookie-parser")
@@ -7,7 +8,7 @@ const mongoose = require("mongoose")
 
 // Connect to MongoDB
 mongoose
-  .connect("mongodb+srv://prismapavse-main-db-0b5591952f6:XbkwSUWzwDKdj8wXT48S3rUKn1DmHG@prod-us-central1-1.lfuy1.mongodb.net/prismapavse-main-db-0b5591952f6")
+  .connect(process.env.DATABASE_URL)
   .then((res) => {
     console.log("Connected to mongodb!")
   })
@@ -24,8 +25,8 @@ const app = express()
 
 app.use(logger("dev"))
 app.use(express.json())
-app.use(methodOverride("_method"))
 app.use(express.urlencoded({extended: false}))
+app.use(methodOverride("_method"))
 app.use(cookieParser())
 app.set("view engine", "hbs")
 app.set("views", path.join(__dirname, "views"))
