@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt")
 const short = require("short-uuid")
 const db = require("../database/index")
 const checkSession = require("../middleware/index")
-const resLocals = {title: "TPM Total Productive Maintenance", sidebar: false, page: "index", scripts: [{script: "index"}]}
+const reslocals = {sidebar: false, title: "TPM Total Productive Maintenance", sidebar: false, page: "index", scripts: [{script: "index"}]}
 
 // Set Local
 function setLocals(req, res, next) {

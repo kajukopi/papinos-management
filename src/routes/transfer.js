@@ -5,7 +5,7 @@ const Transfer = require("../models/transfer.js")
 const router = express.Router()
 
 router.get("/", async (req, res) => {
-  res.locals = {title: "", message: "", scripts: ["transfer"]}
+  res.locals = {sidebar: true, title: "", message: "", scripts: ["transfer"]}
   const transfers = await Transfer.find().lean()
   res.render("transfers", {transfers})
 })

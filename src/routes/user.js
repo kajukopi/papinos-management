@@ -5,7 +5,7 @@ const User = require("../models/user.js")
 const router = express.Router()
 
 router.get("/", async (req, res) => {
-  res.locals = {title: "", message: "", scripts: ["user"]}
+  res.locals = {sidebar: true, title: "", message: "", scripts: ["user"]}
   const users = await User.find().lean()
   res.render("users", {users})
 })

@@ -5,7 +5,7 @@ const Service = require("../models/service.js")
 const router = express.Router()
 
 router.get("/", async (req, res) => {
-  res.locals = {title: "", message: "", scripts: ["service"]}
+  res.locals = {sidebar: true, title: "", message: "", scripts: ["service"]}
   const services = await Service.find().lean()
   res.render("services", {services})
 })

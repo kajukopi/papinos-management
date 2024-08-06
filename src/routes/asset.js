@@ -5,7 +5,7 @@ const Asset = require("../models/item.js")
 const router = express.Router()
 
 router.get("/", async (req, res) => {
-  res.locals = {title: "Assets", message: "", scripts: ["assets"]}
+  res.locals = {sidebar: true, title: "Assets", message: "", scripts: ["assets"]}
   const assets = await Asset.find().lean()
   res.render("assets", {assets})
 })

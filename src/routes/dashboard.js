@@ -5,7 +5,7 @@ const Dashboard = require("../models/dashboard.js")
 const router = express.Router()
 
 router.get("/", async (req, res) => {
-  res.locals = {title: "Dashboard", message: "", scripts: ["dashboard"]}
+  res.locals = {sidebar: true, title: "Dashboard", message: "", scripts: ["dashboard"]}
   const dashboards = await Dashboard.find().lean()
   res.render("dashboards", {dashboards})
 })

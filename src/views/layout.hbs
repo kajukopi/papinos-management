@@ -148,11 +148,23 @@
         <!-- Navbar -->
       </header>
       <!--Main Navigation-->
-    {{/if}}
 
-    <main class="container">
-      {{{body}}}
-    </main>
+      <!-- Main Body -->
+      <main id="content" style="margin-top: 58px">
+        <section class="container my-5 py-2">
+          {{{body}}}
+        </section>
+      </main>
+      <!-- Main Body -->
+    {{else}}
+      <!-- Main Body -->
+      <main>
+        <section class="container h-100">
+          {{{body}}}
+        </section>
+      </main>
+      <!-- Main Body -->
+    {{/if}}
 
   </body>
 
@@ -167,6 +179,7 @@
       </div>
     </div>
   </div>
+
   <div class="modal" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen" style="background: transparent">
       <div class="modal-content" style="background: transparent">
@@ -179,6 +192,7 @@
       </div>
     </div>
   </div>
+
   <script type="module" src="../assets/js/main.js"></script>
   {{#each scripts}}
     <script defer type="module" src="../assets/js/pages/{{this}}.js"></script>

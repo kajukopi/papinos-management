@@ -5,7 +5,7 @@ const Item = require("../models/item.js")
 const router = express.Router()
 
 router.get("/", async (req, res) => {
-  res.locals = {title: "", message: "", scripts: ["index"]}
+  res.locals = {sidebar: true, title: "", message: "", scripts: ["index"]}
   const items = await Item.find().lean()
   res.render("items", {items})
 })
