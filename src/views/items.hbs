@@ -8,8 +8,8 @@
   </div>
 
   <!-- Password input -->
-  <div class="form-outline">
-    <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+  <div class="form-outline mb-4">
+    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
     <label class="form-label" for="description">Description</label>
   </div>
 
@@ -20,6 +20,13 @@
 </form>
 <ul class="list-group list-group-light w-100">
   {{#each items}}
-    <li class="list-group-item">{{this}}</li>
+    <li class="list-group-item d-flex justify-content-between">
+      {{this.name}}
+      {{this.description}}
+      <form action="/items/{{this._id}}" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="btn btn-link" type="submit">delete</button>
+      </form>
+    </li>
   {{/each}}
 </ul>
