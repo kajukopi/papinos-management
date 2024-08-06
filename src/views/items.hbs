@@ -1,0 +1,25 @@
+<h1 class="w-100 text-end">{{title}}</h1>
+<p class="w-100 text-end">{{message}}</p>
+<form action="/items" method="post">
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <input type="text" id="name" name="name" class="form-control" required />
+    <label class="form-label" for="name">Name</label>
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline">
+    <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+    <label class="form-label" for="description">Description</label>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
+</form>
+<ul class="list-group list-group-light w-100">
+  {{#each items}}
+    <li class="list-group-item">{{this}}</li>
+  {{/each}}
+</ul>

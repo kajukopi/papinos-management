@@ -3,10 +3,22 @@ const path = require("path")
 const cookieParser = require("cookie-parser")
 const logger = require("morgan")
 const methodOverride = require("method-override")
+const mongoose = require("mongoose")
 
-const homeRouter = require("./routes/home")
-const homeLogin = require("./routes/login")
-const homeRegister = require("./routes/register")
+// Connect to MongoDB
+mongoose
+  .connect("mongodb+srv://prismapavse-main-db-0b5591952f6:XbkwSUWzwDKdj8wXT48S3rUKn1DmHG@prod-us-central1-1.lfuy1.mongodb.net/prismapavse-main-db-0b5591952f6")
+  .then((res) => {
+    console.log("Connected to mongodb!")
+  })
+  .catch((error) => {
+    console.log(error)
+  })
+
+const routerHome = require("./routes/home")
+const routerLogin = require("./routes/login")
+const routerRegister = require("./routes/register")
+const routerItem = require("./routes/items")
 
 const app = express()
 
@@ -20,8 +32,9 @@ app.set("views", path.join(__dirname, "views"))
 app.use("/assets", express.static(path.join(__dirname, "..", "/assets")))
 
 // Routes
-app.use("/", homeRouter)
-app.use("/login", homeLogin)
-app.use("/register", homeRegister)
+app.use("/", routerHome)
+app.use("/login", routerLogin)
+app.use("/register", routerRegister)
+app.use("/items", routerItem)
 
 module.exports = app
