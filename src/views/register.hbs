@@ -1,27 +1,83 @@
-<form action="/register" method="post">
-  <h1 class="w-100 text-end">{{title}}</h1>
-  <p class="w-100 text-end">{{message}}</p>
-  <!-- Email input -->
-  <div class="form-outline mb-4">
-    <input type="email" id="email" name="email" class="form-control" required />
-    <label class="form-label" for="email">Email address</label>
-  </div>
+<section class="background-radial-gradient overflow-hidden">
+  <div class="container py-5 px-md-5 text-center text-lg-start">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+        <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+        <div class="d-flex justify-content-center align-items-center flex-column h-100">
+          <div class="card text-center shadow shadow-3-strong w-100 h-100">
+            <div class="card-body text-start">
+              <h1 class="w-100 text-start">{{title}}</h1>
+              <p class="w-100 text-start">{{message}}</p>
+              <form>
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row mb-4">
+                  <div class="col">
+                    <div data-mdb-input-init class="form-outline">
+                      <input type="text" id="firstName" name="firstName" class="form-control" />
+                      <label class="form-label" for="firstName">First name</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div data-mdb-input-init class="form-outline">
+                      <input type="text" id="lastName" name="lastName" class="form-control" />
+                      <label class="form-label" for="lastName">Last name</label>
+                    </div>
+                  </div>
+                </div>
 
-  <!-- Password input -->
-  <div class="form-outline mb-4">
-    <input type="password" id="password" name="password" class="form-control" required />
-    <label class="form-label" for="password">Password</label>
-  </div>
+                <!-- Email input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="email" id="email" name="email" class="form-control" />
+                  <label class="form-label" for="email">Email address</label>
+                </div>
 
-  <!-- 2 column grid layout for inline styling -->
-  <div class="row mb-4">
-    <div class="col d-flex justify-content-end">
-      <!-- Simple link -->
-      already become a member?<a class="ms-2" href="/login"> Sign in.</a>
+                <!-- Password input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="password" id="password" name="password" class="form-control" />
+                  <label class="form-label" for="password">Password</label>
+                </div>
+
+                <div class="row d-flex justify-content-between">
+
+                  <div class="col-auto">
+                    <!-- Checkbox -->
+                    <div class="form-check d-flex justify-content-center mb-4">
+                      <input class="form-check-input me-2" type="checkbox" value="" id="subscribe" name="subscribe" checked />
+                      <label class="form-check-label" for="subscribe">
+                        Subscribe to our newsletter
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="col text-end">
+                    <!-- Simple link -->
+                    <a href="/forgot_password">Forgot password?</a>
+                  </div>
+                </div>
+
+                <!-- Submit button -->
+                <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+                <!-- Register buttons -->
+                <div class="text-center">
+                  <p>Already a member? <a href="/login">Sign in</a></p>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+        <h1 class="my-5 display-5 fw-bold ls-tight text-primary">
+          <span class="text-warning">Total Productive Maintenance (TPM)</span>
+        </h1>
+        <p class="mb-4 opacity-70">
+          Total Productive Maintenance (TPM) is a management approach focused on maximizing the efficiency and effectiveness of production processes in manufacturing industries. It aims to achieve zero breakdowns, zero defects, and zero accidents by
+          involving all employees in the maintenance of equipment and machinery.
+        </p>
+      </div>
+
     </div>
   </div>
-  <div class="d-flex justify-content-end">
-    <!-- Submit button -->
-    <button type="submit" class="btn btn-primary">Sign up</button>
-  </div>
-</form>
+</section>
