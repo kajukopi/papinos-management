@@ -5,6 +5,8 @@ const logger = require("morgan")
 const methodOverride = require("method-override")
 
 const homeRouter = require("./routes/home")
+const homeLogin = require("./routes/login")
+const homeRegister = require("./routes/register")
 
 const app = express()
 
@@ -16,7 +18,10 @@ app.use(cookieParser())
 app.set("view engine", "hbs")
 app.set("views", path.join(__dirname, "views"))
 app.use("/assets", express.static(path.join(__dirname, "..", "/assets")))
+
 // Routes
 app.use("/", homeRouter)
+app.use("/login", homeLogin)
+app.use("/register", homeRegister)
 
 module.exports = app
