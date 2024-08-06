@@ -1,4 +1,3 @@
-// routes/item.js
 const express = require("express")
 
 const Item = require("../models/item.js")

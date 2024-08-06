@@ -1,4 +1,3 @@
-// models/item.js
 const mongoose = require("mongoose")
 
 const userSchema = new mongoose.Schema({
@@ -28,6 +27,10 @@ const userSchema = new mongoose.Schema({
   },
   isUser: {
     type: Boolean,
+    required: true,
+  },
+  date: {
+    type: Date,
     required: true,
   },
 })

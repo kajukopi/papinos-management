@@ -1,4 +1,3 @@
-// routes/items.js
 const express = require("express")
 
 const Asset = require("../models/item.js")

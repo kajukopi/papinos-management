@@ -1,4 +1,3 @@
-// routes/transfer.js
 const express = require("express")
 
 const Transfer = require("../models/transfer.js")

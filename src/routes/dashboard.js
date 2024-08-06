@@ -1,4 +1,3 @@
-// routes/dashboard.js
 const express = require("express")
 
 const Dashboard = require("../models/dashboard.js")

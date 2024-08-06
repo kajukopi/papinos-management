@@ -1,4 +1,3 @@
-// models/item.js
 const mongoose = require("mongoose")
 
 const transferSchema = new mongoose.Schema({
@@ -8,6 +7,10 @@ const transferSchema = new mongoose.Schema({
   },
   description: {
     type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
     required: true,
   },
 })
