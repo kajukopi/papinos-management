@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
   },
   firstName: {
     type: String,
-    required: false,
+    required: true,
   },
   lastName: {
     type: String,
@@ -29,8 +29,12 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  subscribe: {
+    type: Boolean,
+    required: true,
+  },
   date: {
-    type: Date,
+    type: Number,
     required: true,
   },
 })

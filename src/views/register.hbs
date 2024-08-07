@@ -8,8 +8,12 @@
           <div class="card text-center shadow shadow-3-strong w-100 h-100">
             <div class="card-body text-start">
               <h1 class="w-100 text-start">{{title}}</h1>
-              <p class="w-100 text-start">{{message}}</p>
-              <form>
+              {{#if error}}
+                <div class="alert alert-danger show" id="example" role="alert">
+                  {{message}}
+                </div>
+              {{/if}}
+              <form action="/register" method="post">
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row">
                   <div class="col-12 col-md-6 mb-4">
@@ -43,7 +47,7 @@
                   <div class="col-auto">
                     <!-- Checkbox -->
                     <div class="form-check d-flex justify-content-center mb-4">
-                      <input class="form-check-input me-2" type="checkbox" value="" id="subscribe" name="subscribe" checked />
+                      <input class="form-check-input me-2" type="checkbox" value="true" id="subscribe" name="subscribe" checked />
                       <label class="form-check-label" for="subscribe">
                         Subscribe to our newsletter
                       </label>
