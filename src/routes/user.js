@@ -12,22 +12,20 @@ router.get("/", handleAuthentication(4), async (req, res) => {
 })
 
 router.post("/", handleAuthentication(4), async (req, res) => {
-  const {name, description} = req.body
-  const newUser = new User({name, description})
+  const newUser = new User(req.body)
   await newUser.save()
   res.redirect("/")
 })
 
-router.put("/:id", handleAuthentication(4), async (req, res) => {
-  const {id} = req.params
-  const {name, description} = req.body
-  await User.findByIdAndUpdate(id, {name, description})
+router.put("/:email", handleAuthentication(4), async (req, res) => {
+  const {email} = req.params
+  await User.findOneAndUpdate({email}, req.body)
   res.redirect("/")
 })
 
-router.delete("/:id", handleAuthentication(4), async (req, res) => {
-  const {id} = req.params
-  await User.findByIdAndDelete(id)
+router.delete("/:email", handleAuthentication(4), async (req, res) => {
+  const {email} = req.params
+  await User.findOneAndDelete({email})
   res.redirect("/")
 })
 

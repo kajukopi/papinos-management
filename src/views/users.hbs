@@ -1,21 +1,38 @@
 <div class="row gx-md-2 gx-lg-3">
 
-  <div class="col-lg-6 mb-3 mb-lg-0">
+  <div class="col-lg-12 mb-3 mb-lg-3">
     <div class="card h-100">
       <div class="card-body">
         <h5 class="card-title">Card title</h5>
-        <div class="d-flex justify-content-end mb-4">
-          <div data-mdb-input-init class="form-outline">
-            <input data-mdb-search data-mdb-target="#table_notifications" type="text" id="search_table_1" class="form-control" />
-            <label class="form-label" for="search_table_1">Search</label>
-          </div>
-          <button class="btn btn-primary btn-sm ms-3" data-mdb-add-entry data-mdb-target="#table_notifications">
-            <i class="fa fa-plus"></i>
-          </button>
-        </div>
         <hr />
-        <div data-mdb-table-editor-init class="table-editor" id="table_notifications" data-mdb-mode="modal" data-mdb-entries="5" data-mdb-entries-options="[5, 10, 15]">
-          <table></table>
+        <div class="table-editor" id="table_1" data-psa-sm="true" data-psa-confirm="true" data-psa-striped="true" data-psa-mode="modal">
+          <table class="table">
+            <thead>
+              <tr>
+                <th data-field="email" class="th-sm">Email</th>
+                <th data-field="firstName" class="th-sm">First Name</th>
+                <th data-field="lastName" class="th-sm">Last Name</th>
+                <th data-field="isAdmin" data-input-type="checkbox" data-default-value="true" class="th-sm">Admin</th>
+                <th data-field="isStaff" data-input-type="checkbox" data-default-value="true" class="th-sm">Staff</th>
+                <th data-field="isUser" data-input-type="checkbox" data-default-value="true" class="th-sm">User</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {{#each users}}
+
+                <tr>
+                  <td>{{this.email}}</td>
+                  <td>{{this.firstName}}</td>
+                  <td>{{this.lastName}}</td>
+                  <td>{{this.isAdmin}}</td>
+                  <td>{{this.isStaff}}</td>
+                  <td>{{this.isUser}}</td>
+                </tr>
+
+              {{/each}}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
