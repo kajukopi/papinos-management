@@ -192,10 +192,10 @@
       </div>
     </div>
   </div>
-
-  <script type="module" src="../assets/js/main.js"></script>
+  <script src="../../assets/js/core.min.js"></script>
+  <script src="../../assets/js/module.min.js"></script>
   {{#each scripts}}
-    <script defer type="module" src="../assets/js/pages/{{this}}.js"></script>
+    <script defer type="text/javascript" src="../assets/js/pages/{{this}}.js"></script>
   {{/each}}
 
 </html>

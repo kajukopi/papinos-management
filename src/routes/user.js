@@ -11,21 +11,21 @@ router.get("/", handleAuthentication(4), async (req, res) => {
   locals.message = ""
 })
 
-router.post("/", handleAuthentication(3), async (req, res) => {
+router.post("/", handleAuthentication(4), async (req, res) => {
   const {name, description} = req.body
   const newUser = new User({name, description})
   await newUser.save()
   res.redirect("/")
 })
 
-router.put("/:id", handleAuthentication(2), async (req, res) => {
+router.put("/:id", handleAuthentication(4), async (req, res) => {
   const {id} = req.params
   const {name, description} = req.body
   await User.findByIdAndUpdate(id, {name, description})
   res.redirect("/")
 })
 
-router.delete("/:id", handleAuthentication(1), async (req, res) => {
+router.delete("/:id", handleAuthentication(4), async (req, res) => {
   const {id} = req.params
   await User.findByIdAndDelete(id)
   res.redirect("/")

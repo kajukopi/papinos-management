@@ -31,7 +31,7 @@ app.use(
     secret: "karimroy",
     resave: false,
     saveUninitialized: false,
-    cookie: {maxAge: 30000},
+    cookie: {maxAge: 60 * 60000},
   })
 )
 

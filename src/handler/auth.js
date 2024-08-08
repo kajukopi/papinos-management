@@ -7,19 +7,20 @@ const ROLE_LEVELS = {
 
 function handleAuthentication(requiredLevel) {
   return function (req, res, next) {
-    if (!req.session || !req.session.level) {
-      return res.redirect("/")
-    }
+    next()
+    // if (!req.session || !req.session.level) {
+    //   return res.redirect("/login")
+    // }
 
-    const userLevel = Object.keys(ROLE_LEVELS).find((role) => req.session[role]) || 0
+    // const userLevel = Object.keys(ROLE_LEVELS).find((role) => req.session[role]) || 0
 
-    // Allow access if requiredLevel is undefined or if the user's level meets or exceeds the required level
-    if (requiredLevel === undefined || userLevel <= requiredLevel) {
-      return next()
-    }
+    // // Allow access if requiredLevel is undefined or if the user's level meets or exceeds the required level
+    // if (requiredLevel === undefined || userLevel <= requiredLevel) {
+    //   return next()
+    // }
 
-    // Redirect if the user's level is higher than the required level
-    return res.redirect("/dashboard")
+    // // Redirect if the user's level is higher than the required level
+    // return res.redirect("/dashboard")
   }
 }
 
