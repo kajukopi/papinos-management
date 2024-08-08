@@ -1,4 +1,3 @@
-load.hide()
 try {
   const sidenav = document.getElementById("sidenav")
   const sidenavInstance = psa.Sidenav.getInstance(sidenav)

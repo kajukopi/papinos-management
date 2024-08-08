@@ -198,9 +198,12 @@
     </div>
   </div>
 
-  <script src="../../assets/js/core.min.js"></script>
-  <script src="../../assets/js/module.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/core.min.js"></script>
+
+  <script type="text/javascript" src="../../assets/js/module.min.js"></script>
+
+  <script type="text/javascript" src="../../assets/js/index.js"></script>
   {{#each scripts}}
-    <script type="text/javascript" src="../assets/js/pages/{{this}}.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/pages/{{this}}.min.js"></script>
   {{/each}}
 </html>
