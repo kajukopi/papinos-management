@@ -9,12 +9,14 @@
           <table class="table">
             <thead>
               <tr>
+                <th data-field="date" class="th-sm">Date</th>
                 <th data-field="email" class="th-sm">Email</th>
                 <th data-field="firstName" class="th-sm">First Name</th>
                 <th data-field="lastName" class="th-sm">Last Name</th>
                 <th data-field="isAdmin" data-input-type="checkbox" data-default-value="true" class="th-sm">Admin</th>
                 <th data-field="isStaff" data-input-type="checkbox" data-default-value="true" class="th-sm">Staff</th>
                 <th data-field="isUser" data-input-type="checkbox" data-default-value="true" class="th-sm">User</th>
+                <th data-field="subscribe" data-input-type="checkbox" data-default-value="true" class="th-sm">Subscribe</th>
 
               </tr>
             </thead>
@@ -22,12 +24,14 @@
               {{#each users}}
 
                 <tr>
+                  <td>{{this.date}}</td>
                   <td>{{this.email}}</td>
                   <td>{{this.firstName}}</td>
                   <td>{{this.lastName}}</td>
                   <td>{{this.isAdmin}}</td>
                   <td>{{this.isStaff}}</td>
                   <td>{{this.isUser}}</td>
+                  <td>{{this.subscribe}}</td>
                 </tr>
 
               {{/each}}
@@ -39,15 +43,7 @@
   </div>
 
   <div class="col-lg-6 mb-3 mb-lg-0">
-    <div class="card h-100">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the bulk of the card's content.
-        </p>
-        <button type="button" class="btn btn-primary">Button</button>
-      </div>
-    </div>
+
   </div>
 
 </div>

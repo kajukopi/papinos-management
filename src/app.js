@@ -6,6 +6,16 @@ const session = require("express-session")
 const logger = require("morgan")
 const methodOverride = require("method-override")
 const mongoose = require("mongoose")
+const hbs = require('hbs');
+
+// Registering a helper to convert date-time to local date format
+hbs.registerHelper("localDate", function (dateTimeString, options) {
+  const date = new Date(dateTimeString)
+  // Convert the date to a localized string format (e.g., 'YYYY-MM-DD')
+  const localDateString = date.toLocaleDateString("ID-id") // You can customize this format
+
+  return localDateString
+})
 
 mongoose
   .connect(process.env.DATABASE_URL)

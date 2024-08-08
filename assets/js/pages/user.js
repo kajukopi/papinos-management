@@ -64,3 +64,23 @@ function removeItemAndSyncArrays(array1, array2) {
     }
   }
 }
+
+;(() => {
+  function convertTimestampToDate(timestamp) {
+    const date = new Date(Number(timestamp))
+    return date.toLocaleString("id-ID")
+  }
+
+  // Contoh penggunaan:
+  const timestamp = 1723126323000
+  console.log(convertTimestampToDate(timestamp)) // Output: "8/8/2024, 9:12:03 PM"
+
+  function convertDateToTimestamp(dateString) {
+    const date = new Date(dateString)
+    return date.getTime()
+  }
+
+  // Contoh penggunaan:
+  const dateString = "8/8/2024, 9:12:03 PM"
+  console.log(convertDateToTimestamp(dateString)) // Output: 1723126323383
+})()
