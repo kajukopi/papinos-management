@@ -24,7 +24,10 @@ router.post("/", async (req, res, next) => {
           if (user.toObject()[key] === true) req.session.level = key
         }
       }
-      req.session.email = email
+      req.session._id = user.toObject()._id
+      req.session.email = user.toObject().firstName
+      req.session.firstName = user.toObject().firstName
+      req.session.lastName = user.toObject().lastName
       req.session.save()
       return res.redirect("/dashboard")
     } else {

@@ -1,20 +1,25 @@
-const mongoose = require("mongoose")
+const {Schema, model} = require("mongoose")
 
-const transferSchema = new mongoose.Schema({
+const transferSchema = new Schema({
   name: {
     type: String,
+    required: true,
+  },
+  category: {
+    type: Boolean,
     required: true,
   },
   description: {
     type: String,
     required: true,
   },
-  date: {
+  createAt: {
     type: Date,
-    required: true,
+    default: Date.now,
   },
+  author: {type: Schema.Types.ObjectId, ref: "User"},
 })
 
-const Transfer = mongoose.model("Transfer", transferSchema)
+const Transfer = model("Transfer", transferSchema)
 
 module.exports = Transfer

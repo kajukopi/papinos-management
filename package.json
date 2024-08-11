@@ -6,7 +6,10 @@
   "license": "ISC",
   "scripts": {
     "dev": "nodemon ./src/index",
-    "start": "node ./src/index"
+    "start": "node ./src/index",
+    "mongo-start": "docker run -d -p 27017:27017 --name mymongo -v mongo-data:/data/db mongo",
+    "mongo-stop": "docker stop mymongo",
+    "mongo-remove": "docker rm -f mymongo"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

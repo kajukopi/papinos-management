@@ -1,6 +1,6 @@
-const mongoose = require("mongoose")
+const {Schema, model} = require("mongoose")
 
-const maintenanceSchema = new mongoose.Schema({
+const maintenanceSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -9,12 +9,13 @@ const maintenanceSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  date: {
+  createAt: {
     type: Date,
-    required: true,
+    default: Date.now,
   },
+  author: {type: Schema.Types.ObjectId, ref: "User"},
 })
 
-const Maintenance = mongoose.model("Maintenance", maintenanceSchema)
+const Maintenance = model("Maintenance", maintenanceSchema)
 
 module.exports = Maintenance

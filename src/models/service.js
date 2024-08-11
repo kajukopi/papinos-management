@@ -1,6 +1,6 @@
-const mongoose = require("mongoose")
+const {Schema, model} = require("mongoose")
 
-const serviceSchema = new mongoose.Schema({
+const serviceSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -9,12 +9,13 @@ const serviceSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  date: {
+  createAt: {
     type: Date,
-    required: true,
+    default: Date.now,
   },
+  author: {type: Schema.Types.ObjectId, ref: "User"},
 })
 
-const Service = mongoose.model("Service", serviceSchema)
+const Service = model("Service", serviceSchema)
 
 module.exports = Service

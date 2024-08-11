@@ -1,12 +1,9 @@
-const mongoose = require("mongoose")
+const {Schema, model} = require("mongoose")
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
-    lowercase: true,
-    match: [/^\S+@\S+\.\S+$/, "Please provide a valid email address"],
   },
   password: {
     type: String,
@@ -36,12 +33,16 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  date: {
-    type: Number,
-    required: true,
+  createAt: {
+    type: Date,
+    default: Date.now,
   },
 })
 
-const User = mongoose.model("User", userSchema)
+userSchema.statics.findByEmail = function (email) {
+  return this.findOne(email)
+}
+
+const User = model("User", userSchema)
 
 module.exports = User

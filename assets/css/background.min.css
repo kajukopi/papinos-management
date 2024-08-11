@@ -83,3 +83,40 @@
     backdrop-filter: blur(8px);
     background-color: rgba(220, 76, 100, 0.5);
 }
+
+.page-intro {
+    background-color: white;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+img {
+    max-width: 80%;
+}
+
+.psa-page-content {
+    padding-left: 240px;
+    transition: padding 0.3s linear;
+}
+
+#toggler {
+    display: none;
+}
+
+@media (max-width: 660px) {
+    .psa-page-content {
+        padding-left: 0px;
+    }
+
+    #toggler {
+        display: unset;
+    }
+
+    .mask img {
+        width: 100%;
+    }
+
+    .sidenav[data-psa-hidden='false'] {
+        transform: translateX(-100%);
+    }
+}

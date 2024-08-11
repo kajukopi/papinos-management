@@ -6,7 +6,7 @@ const session = require("express-session")
 const logger = require("morgan")
 const methodOverride = require("method-override")
 const mongoose = require("mongoose")
-const hbs = require('hbs');
+const hbs = require("hbs")
 
 // Registering a helper to convert date-time to local date format
 hbs.registerHelper("localDate", function (dateTimeString, options) {
@@ -17,6 +17,10 @@ hbs.registerHelper("localDate", function (dateTimeString, options) {
   return localDateString
 })
 
+hbs.registerHelper("false", function (value, options) {
+  return !value
+})
+
 mongoose
   .connect(process.env.DATABASE_URL)
   .then(() => {
@@ -25,6 +29,15 @@ mongoose
   .catch((error) => {
     console.log(error)
   })
+
+// mongoose.connection
+//   .dropDatabase()
+//   .then(() => {
+//     console.log("Database reset complete.")
+//   })
+//   .catch((err) => {
+//     console.error("Error resetting database:", err)
+//   })
 
 const app = express()
 

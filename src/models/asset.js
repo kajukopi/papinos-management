@@ -1,6 +1,6 @@
-const mongoose = require("mongoose")
+const {Schema, model} = require("mongoose")
 
-const assetSchema = new mongoose.Schema({
+const assetSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -9,12 +9,13 @@ const assetSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  date: {
+  createAt: {
     type: Date,
-    required: true,
+    default: Date.now,
   },
+  author: {type: Schema.Types.ObjectId, ref: "User"},
 })
 
-const Asset = mongoose.model("Asset", assetSchema)
+const Asset = model("Asset", assetSchema)
 
 module.exports = Asset

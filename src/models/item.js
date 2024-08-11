@@ -1,6 +1,6 @@
-const mongoose = require("mongoose")
+const {Schema, model} = require("mongoose")
 
-const itemSchema = new mongoose.Schema({
+const itemSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -9,12 +9,13 @@ const itemSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  date: {
+  createAt: {
     type: Date,
-    required: true,
+    default: Date.now,
   },
+  author: {type: Schema.Types.ObjectId, ref: "User"},
 })
 
-const Item = mongoose.model("Item", itemSchema)
+const Item = model("Item", itemSchema)
 
 module.exports = Item

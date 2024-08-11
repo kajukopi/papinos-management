@@ -22,7 +22,7 @@ router.post("/", async (req, res, next) => {
       const body = {...req.body, subscribe: req.body.subscribe === "true" ? true : false, password: await bcrypt.hash(password, 10), isAdmin: false, isStaff: false, isUser: false, date: new Date().getTime()}
       const newUser = new User(body)
       await newUser.save()
-      return res.redirect("/register")
+      return res.redirect("/login")
     }
   } catch (err) {
     return res.render("register", {err})
